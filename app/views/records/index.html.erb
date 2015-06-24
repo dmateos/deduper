@@ -1,0 +1,39 @@
+<%- model_class = Record -%>
+<div class="page-header">
+  <h1><%=t '.title', :default => model_class.model_name.human.pluralize.titleize %></h1>
+</div>
+
+<%= paginate @records %>
+
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th><%= model_class.human_attribute_name(:id) %></th>
+      <th><%= model_class.human_attribute_name(:orgname) %></th>
+      <th><%= model_class.human_attribute_name(:firstname) %></th>
+      <th><%= model_class.human_attribute_name(:lastname) %></th>
+      <th><%= model_class.human_attribute_name(:email) %></th>
+      <th><%= model_class.human_attribute_name(:date) %></th>
+      <th><%= model_class.human_attribute_name(:status) %></th>
+      <th><%= model_class.human_attribute_name(:email_status) %></th>
+      <th><%= model_class.human_attribute_name(:secondary_status) %></th>
+      <th><%= model_class.human_attribute_name(:created_at) %></th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @records.each do |record| %>
+      <tr>
+        <td><%= record.id %></td>
+        <td><%= record.orgname %></td>
+        <td><%= record.firstname %></td>
+        <td><%= record.lastname %></td>
+        <td><%= record.email %></td>
+        <td><%= record.date %></td>
+        <td><%= record.status %></td>
+        <td><%= record.email_status %></td>
+        <td><%= record.secondary_status %></td>
+        <td><%=l record.created_at %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

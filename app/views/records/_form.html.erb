@@ -1,0 +1,80 @@
+<%= form_for @record, :html => { :class => "form-horizontal record" } do |f| %>
+
+    <% if @record.errors.any? %>
+    <div id="error_expl" class="panel panel-danger">
+      <div class="panel-heading">
+        <h3 class="panel-title"><%= pluralize(@record.errors.count, "error") %> prohibited this record from being saved:</h3>
+      </div>
+      <div class="panel-body">
+        <ul>
+        <% @record.errors.full_messages.each do |msg| %>
+          <li><%= msg %></li>
+        <% end %>
+        </ul>
+      </div>
+    </div>
+  <% end %>
+
+  <div class="control-group">
+    <%= f.label :orgname, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.text_field :orgname, :class => 'form-control' %>
+    </div>
+    <%= error_span(@record[:orgname]) %>
+  </div>
+  <div class="control-group">
+    <%= f.label :firstname, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.text_field :firstname, :class => 'form-control' %>
+    </div>
+    <%= error_span(@record[:firstname]) %>
+  </div>
+  <div class="control-group">
+    <%= f.label :lastname, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.text_field :lastname, :class => 'form-control' %>
+    </div>
+    <%= error_span(@record[:lastname]) %>
+  </div>
+  <div class="control-group">
+    <%= f.label :email, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.text_field :email, :class => 'form-control' %>
+    </div>
+    <%= error_span(@record[:email]) %>
+  </div>
+  <div class="control-group">
+    <%= f.label :date, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.text_field :date, :class => 'form-control' %>
+    </div>
+    <%= error_span(@record[:date]) %>
+  </div>
+  <div class="control-group">
+    <%= f.label :status, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.text_field :status, :class => 'form-control' %>
+    </div>
+    <%= error_span(@record[:status]) %>
+  </div>
+  <div class="control-group">
+    <%= f.label :email_status, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.text_field :email_status, :class => 'form-control' %>
+    </div>
+    <%= error_span(@record[:email_status]) %>
+  </div>
+  <div class="control-group">
+    <%= f.label :secondary_status, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.text_field :secondary_status, :class => 'form-control' %>
+    </div>
+    <%= error_span(@record[:secondary_status]) %>
+  </div>
+
+
+  <%= f.submit nil, :class => 'btn btn-primary' %>
+  <%= link_to t('.cancel', :default => t("helpers.links.cancel")),
+            records_path, :class => 'btn btn-default' %>
+
+<% end %>
