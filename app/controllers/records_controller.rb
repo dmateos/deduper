@@ -10,6 +10,7 @@ class RecordsController < ApplicationController
       }
     end
 
+    flash[:notice] = "Duplicates checked"
     respond_to do |format|
       format.html do
         headers['Content-Disposition'] = "attachment; filename=\"dedupe-list.csv\""
@@ -21,6 +22,7 @@ class RecordsController < ApplicationController
 
   def import_new
     Record.import_new(params[:csv])
+    flash[:notice] = "Imported new records"
     respond_to do |format|
       format.html { redirect_to root_path }
     end

@@ -21,8 +21,8 @@ class Record < ActiveRecord::Base
         status: row[3],
         email_status: row[4],
         secondary_status: row[5],
-        firstname: "harry",
-        lastname: "sally"
+        firstname: row[6],
+        lastname: row[7]
       })
     end
   end
