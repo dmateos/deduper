@@ -2,9 +2,14 @@ require "csv"
 
 class Record < ActiveRecord::Base
   def self.check_dupes(csv_data)
-    CSV.foreach(csv_data.path) do |row|
+    non_dupes = []
 
-    end 
+    CSV.foreach(csv_data.path) do |row|
+      r = Record.find_by_email(row[0])
+      non_dupes << row if r.nil?
+    end
+
+    non_dupes
   end
 
   def self.import_new(csv_data)

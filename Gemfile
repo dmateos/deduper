@@ -51,4 +51,5 @@ gem 'twitter-bootstrap-rails'
 gem 'groupdate'
 gem 'chronic'
 gem 'kaminari'
+gem 'render_csv'
 
