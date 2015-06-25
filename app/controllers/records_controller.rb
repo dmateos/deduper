@@ -5,12 +5,14 @@ class RecordsController < ApplicationController
 
   def check_dupe
     @csv = CSV.generate do |csv|
-      Record.check_dupes(params[:csv]).each { |nd| csv << nd }
+      Record.check_dupes(params[:csv], params[:col_num], params[:field]).each { |nd| 
+        csv << nd 
+      }
     end
 
     respond_to do |format|
       format.html do
-        headers['Content-Disposition'] = "attachment; filename=\"user-list\""
+        headers['Content-Disposition'] = "attachment; filename=\"dedupe-list.csv\""
         headers['Content-Type'] ||= 'text/csv'
         render :check_dupe, layout: false
       end

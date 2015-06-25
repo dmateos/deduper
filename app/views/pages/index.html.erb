@@ -1,8 +1,12 @@
 <div class="row">
   <div class="col-md-12">
+    <h2> Check for dupes against the masterlist </h2>
     <%= form_tag "/check_dupe", multipart: true, format: :csv do %>
-      <%= label_tag "Check for dupes against master list" %>
       <%= file_field_tag :csv, class: "form-control"  %>
+      <%= label_tag "Column number to use for comparison (starts at 0)" %>
+      <%= text_field_tag :col_num, 0, class: "form-control" %>
+      <%= label_tag "Record field to compare against" %>
+      <%= select_tag(:field, options_for_select(Record.get_attributes, ["email"]), class: "form-control") %>
       <%= submit_tag :submit, class: "btn"  %>
     <% end %>
   </div>
@@ -10,8 +14,8 @@
 
 <div class="row">
   <div class="col-md-12">
+    <h2> Add to the masterlist </h2>
     <%= form_tag "/import_new", multipart: true do %>
-      <%= label_tag "Import new list" %>
       <%= file_field_tag :csv, class: "form-control"  %>
       <%= submit_tag :submit, class: "btn"  %>
     <% end %>
