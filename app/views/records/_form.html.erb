@@ -71,6 +71,13 @@
     </div>
     <%= error_span(@record[:secondary_status]) %>
   </div>
+  <div class="control-group">
+    <%= f.label :blacklist, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.text_field :blacklist, :class => 'form-control' %>
+    </div>
+    <%= error_span(@record[:blacklist]) %>
+  </div>
 
 
   <%= f.submit nil, :class => 'btn btn-primary' %>

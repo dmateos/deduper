@@ -20,6 +20,8 @@
   <dd><%= @record.email_status %></dd>
   <dt><strong><%= model_class.human_attribute_name(:secondary_status) %>:</strong></dt>
   <dd><%= @record.secondary_status %></dd>
+  <dt><strong><%= model_class.human_attribute_name(:blacklist) %>:</strong></dt>
+  <dd><%= @record.blacklist %></dd>
 </dl>
 
 <%= link_to t('.back', :default => t("helpers.links.back")),

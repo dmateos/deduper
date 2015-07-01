@@ -15,8 +15,8 @@ class Record < ActiveRecord::Base
   def self.import_new(csv_data)
     CSV.foreach(csv_data.path) do |row|
       Record.create!({
-        orgname: row[0],
-        email: row[1],
+        orgname: row[1],
+        email: row[0],
         date: Chronic.parse(row[2]),
         status: row[3],
         email_status: row[4],

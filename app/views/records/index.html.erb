@@ -2,9 +2,6 @@
 <div class="page-header">
   <h1><%=t '.title', :default => model_class.model_name.human.pluralize.titleize %></h1>
 </div>
-
-<%= paginate @records %>
-
 <table class="table table-striped">
   <thead>
     <tr>
@@ -17,7 +14,9 @@
       <th><%= model_class.human_attribute_name(:status) %></th>
       <th><%= model_class.human_attribute_name(:email_status) %></th>
       <th><%= model_class.human_attribute_name(:secondary_status) %></th>
+      <th><%= model_class.human_attribute_name(:blacklist) %></th>
       <th><%= model_class.human_attribute_name(:created_at) %></th>
+      <th><%=t '.actions', :default => t("helpers.actions") %></th>
     </tr>
   </thead>
   <tbody>
@@ -32,6 +31,7 @@
         <td><%= record.status %></td>
         <td><%= record.email_status %></td>
         <td><%= record.secondary_status %></td>
+        <td><%= record.blacklist %></td>
         <td><%=l record.created_at %></td>
       </tr>
     <% end %>

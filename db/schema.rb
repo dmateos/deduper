@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150624063106) do
+ActiveRecord::Schema.define(version: 20150701052416) do
 
   create_table "records", force: :cascade do |t|
     t.string   "orgname",          limit: 255
@@ -24,6 +24,7 @@ ActiveRecord::Schema.define(version: 20150624063106) do
     t.string   "secondary_status", limit: 255
     t.datetime "created_at",                   null: false
     t.datetime "updated_at",                   null: false
+    t.string   "blacklist",        limit: 255
   end
 
 end
