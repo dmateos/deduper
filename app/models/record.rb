@@ -22,7 +22,8 @@ class Record < ActiveRecord::Base
         email_status: row[4],
         secondary_status: row[5],
         firstname: row[6],
-        lastname: row[7]
+        lastname: row[7],
+        blacklist: row[8]
       })
     end
   end
