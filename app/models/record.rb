@@ -6,7 +6,11 @@ class Record < ActiveRecord::Base
 
     CSV.foreach(csv_data.path) do |row|
       r = Record.send("find_by_#{field}", row[col_num.to_i])
-      non_dupes << row if r.nil?
+      if r
+        non_dupes << r.attributes.values
+      else
+        non_dupes << row 
+      end
     end
 
     non_dupes
