@@ -7,7 +7,11 @@
       <%= text_field_tag :col_num, 0, class: "form-control" %>
       <%= label_tag "Record field to compare against" %>
       <%= select_tag(:field, options_for_select(Record.get_attributes, ["email"]), class: "form-control") %>
-      <%= submit_tag :submit, class: "btn"  %>
+      <%= label_tag "Include deduped entries" %>
+      <%= check_box_tag :inc_dupes, class: "form-control" %>
+      <div>
+        <%= submit_tag :submit, class: "btn"  %>
+      </div>
     <% end %>
   </div>
 </div>
@@ -17,7 +21,7 @@
     <h2> Add to the masterlist </h2>
     <div> CSV Format: email, orgname, date, status, email_status, secondary_status, firstname, lastname, blacklist </div>
     <%= form_tag "/import_new", multipart: true do %>
-      <%= file_field_tag :csv, class: "form-control"  %>
+      <%= file_field_tag :csv, class: "form-control" %>
       <%= submit_tag :submit, class: "btn", data: { confirm: "are you like totes sure?" }  %>
     <% end %>
   </div>

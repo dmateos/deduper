@@ -5,7 +5,7 @@ class RecordsController < ApplicationController
 
   def check_dupe
     @csv = CSV.generate do |csv|
-      Record.check_dupes(params[:csv], params[:col_num], params[:field]).each { |nd| 
+      Record.check_dupes(params[:csv], params[:col_num], params[:field], params[:inc_dupes]).each { |nd| 
         csv << nd 
       }
     end

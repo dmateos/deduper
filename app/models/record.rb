@@ -1,18 +1,16 @@
 require "csv"
 
 class Record < ActiveRecord::Base
-  def self.check_dupes(csv_data, col_num = 0, field = "email")
+  def self.check_dupes(csv_data, col_num = 0, field = "email", inc_dupes = true)
     non_dupes = []
-
     CSV.foreach(csv_data.path) do |row|
       r = Record.send("find_by_#{field}", row[col_num.to_i])
-      if r
-        non_dupes << r.attributes.values
+      if inc_dupes
+        r ? non_dupes << (row << r.email_status) : non_dupes << row
       else
-        non_dupes << row 
+        non_dupes << row if r.nil?
       end
     end
-
     non_dupes
   end
 
